@@ -30,5 +30,8 @@ def load_data(sheets_url):
 df = load_data(st.secrets["public_gsheets_url"])
 
 # Print results.
-for row in df.itertuples():
-    st.write(f"{row.TempInt}")
+#for row in df.itertuples():
+#    st.write(f"{row.TempInt}")
+
+fig1 = px.scatter(df, x=df.Date, y=df.columns,title="Comportement Thermique :")
+st.plotly_chart(fig1, use_container_width=True)  
