@@ -35,7 +35,7 @@ df.Date = pd.to_datetime(df.Date)
 
 Voies = ['Date', 'TempInt', 'Modele_StationCh', 'Modele_MeteoOWM']
 df2=df[Voies]
-fig1 = px.scatter(df2, x=df2.Date, y=df2.columns,range_y=[-20, 100],title="Comportement Thermique :")
+fig1 = px.scatter(df2, x=df2.Date, y=df2.columns,title="Comportement Thermique :")
 st.plotly_chart(fig1, use_container_width=True)  
 
 
