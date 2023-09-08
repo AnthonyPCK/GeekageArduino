@@ -33,11 +33,15 @@ df.Date = pd.to_datetime(df.Date)
 #for row in df.itertuples():
 #    st.write(f"{row.TempInt}")
 
+df.diffTime = np.concatenate((np.array([0]),np.diff(df.Date)))
+for row in df.itertuples():
+    st.write(f"{row.diffTime}")
+
 Voies = ['Date', 'TempInt', 'Modele_StationCh', 'Modele_MeteoOWM']
 df2=df[Voies]
-fig1 = px.scatter(df2, x=df2.Date, y=df2.columns,title="Comportement Thermique :")
+fig1 = px.scatter(df2, x=df2.Date, y=df2.columns,title="Modélisation :")
 st.plotly_chart(fig1, use_container_width=True)  
 
 
-fig2 = px.scatter(df, x=df.Date, y=df.columns,range_y=[-20, 100],title="Comportement Thermique :")
+fig2 = px.scatter(df, x=df.Date, y=df.columns,range_y=[-20, 100],title="Tout :")
 st.plotly_chart(fig2, use_container_width=True)  
