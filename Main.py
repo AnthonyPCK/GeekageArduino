@@ -28,7 +28,7 @@ def load_data(sheets_url):
     return pd.read_csv(csv_url)
 
 df = load_data(st.secrets["public_gsheets_url"])
-
+df.Date = pd.to_datetime(df.Date)
 # Print results.
 #for row in df.itertuples():
 #    st.write(f"{row.TempInt}")
