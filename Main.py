@@ -47,7 +47,7 @@ fig1 = px.scatter(df2, x=df2.Date, y=df2.columns,title="Modélisation :")
 st.plotly_chart(fig1, use_container_width=True)  
 
 
-fig2 = px.scatter(df, x=df.Date, y=df.columns,range_y=[-20, 100],title="Tout :")
+fig2 = px.line(df, x=df.Date, y=df.columns,range_y=[-20, 100],title="Tout :")
 st.plotly_chart(fig2, use_container_width=True)  
 
 fig3 = px.scatter(df, x=df.Date, y=df.columns,title="Tout :")
