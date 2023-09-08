@@ -44,7 +44,7 @@ st.write('Temperature intérieure = ', Tint)
 st.write('Temperature extérieure = ', Text)
 
 
-Voies = ['Date', 'TempInt', 'Modele_StationCh', 'Modele_MeteoOWM']
+Voies = ['Date', 'TempInt', "TempStationChaptuzat", 'Modele_StationCh', 'Modele_MeteoOWM']
 df2=df[Voies]
 fig1 = px.scatter(df2, x=df2.Date, y=df2.columns,title="Modélisation :")
 st.plotly_chart(fig1, use_container_width=True)  
