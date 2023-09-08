@@ -37,8 +37,8 @@ df.Time = df.Date.to_timestamp
 
 
 #df["diffTime"] = np.concatenate((np.array([0]),np.diff(df.Date)))
-for row in df.itertuples():
-    st.write(f"{row.diffTime}")
+#for row in df.itertuples():
+#    st.write(f"{row.diffTime}")
 
 Voies = ['Date', 'TempInt', 'Modele_StationCh', 'Modele_MeteoOWM']
 df2=df[Voies]
