@@ -31,13 +31,11 @@ df = load_data(st.secrets["public_gsheets_url"])
 df.Date = pd.to_datetime(df.Date)
 #df["Time"] = df.Date.values.astype(np.int64) // 10 ** 9
 df["diffTime"] = np.concatenate((np.array([0]),np.diff((df.Date.values.astype(np.int64) // 10 ** 9)/60/60)))
-# Print results.
-for row in df.itertuples():
-    st.write(f"{row.index}")
 
-for row in df.itertuples():
-    if row>1:
-        df.loc[row,"Modele_StationCh"] = df.loc[row-1].Modele_StationCh
+
+for ii in df.index:
+    if ii>1:
+        df.at[ii,"Modele_StationCh"] = df.at[ii-1].Modele_StationCh
         st.write(f"{row.Time}")
 
 
