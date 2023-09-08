@@ -32,8 +32,8 @@ df.Date = pd.to_datetime(df.Date)
 #df["Time"] = df.Date.values.astype(np.int64) // 10 ** 9
 df["diffTime"] = np.concatenate((np.array([0]),np.diff((df.Date.values.astype(np.int64) // 10 ** 9)/60/60)))
 # Print results.
-#for row in df.itertuples():
-#    st.write(f"{row.Time}")
+for row in df.itertuples():
+    st.write(f"{row.index}")
 
 for row in df.itertuples():
     if row>1:
