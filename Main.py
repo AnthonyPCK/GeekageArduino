@@ -29,12 +29,12 @@ def load_data(sheets_url):
 
 df = load_data(st.secrets["public_gsheets_url"])
 df.Date = pd.to_datetime(df.Date)
+df.Time = pd.to_timestamp(df.Date)
 # Print results.
-#for row in df.itertuples():
-#    st.write(f"{row.TempInt}")
+for row in df.itertuples():
+    st.write(f"{row.Time}")
 
-df_time = pd.to_datetime(df["Date"])
-df["diffTime"] = df_time.dt.hour +df_time.dt.minute/60 + df_time.dt.second/3600
+
 
 #df["diffTime"] = np.concatenate((np.array([0]),np.diff(df.Date)))
 for row in df.itertuples():
