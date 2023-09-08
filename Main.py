@@ -29,7 +29,7 @@ def load_data(sheets_url):
 
 df = load_data(st.secrets["public_gsheets_url"])
 df.Date = pd.to_datetime(df.Date)
-df["Time"] = df.Date.to_timestamp
+df["Time"] = df.Date.values.astype(np.int64)
 # Print results.
 #for row in df.itertuples():
 #    st.write(f"{row.Time}")
