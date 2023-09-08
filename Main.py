@@ -36,7 +36,7 @@ df["diffTime"] = np.concatenate((np.array([0]),np.diff((df.Date.values.astype(np
 for ii in df.index:
     if ii>1:
         df.at[ii,"Modele_StationCh"] = df.at[ii-1,"Modele_StationCh"]
-        st.write(f"{row.Time}")
+
 
 
 
