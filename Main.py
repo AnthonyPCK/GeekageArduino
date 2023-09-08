@@ -30,15 +30,14 @@ def load_data(sheets_url):
 df = load_data(st.secrets["public_gsheets_url"])
 df.Date = pd.to_datetime(df.Date)
 df["Time"] = df.Date.values.astype(np.int64)
+df["diffTime"] = np.concatenate((np.array([0]),np.diff(df.Time)))
 # Print results.
 #for row in df.itertuples():
 #    st.write(f"{row.Time}")
 
 
 
-#df["diffTime"] = np.concatenate((np.array([0]),np.diff(df.Date)))
-#for row in df.itertuples():
-#    st.write(f"{row.diffTime}")
+
 
 Voies = ['Date', 'TempInt', 'Modele_StationCh', 'Modele_MeteoOWM']
 df2=df[Voies]
