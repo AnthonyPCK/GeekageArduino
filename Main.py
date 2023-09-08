@@ -33,5 +33,5 @@ df = load_data(st.secrets["public_gsheets_url"])
 #for row in df.itertuples():
 #    st.write(f"{row.TempInt}")
 
-fig1 = px.scatter(df, x=df.Date, y=df.columns,title="Comportement Thermique :")
+fig1 = px.scatter(df, x=df.Date, y=df.columns,range_y=[-20, 100],title="Comportement Thermique :")
 st.plotly_chart(fig1, use_container_width=True)  
