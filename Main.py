@@ -33,7 +33,10 @@ df.Date = pd.to_datetime(df.Date)
 #for row in df.itertuples():
 #    st.write(f"{row.TempInt}")
 
-df["diffTime"] = np.concatenate((np.array([0]),np.diff(df.Date)))
+df_time = pd.to_datetime(df["Date"])
+df["diffTime"] = df_time.dt.hour +df_time.dt.minute/60 + df_time.dt.second/3600
+
+#df["diffTime"] = np.concatenate((np.array([0]),np.diff(df.Date)))
 for row in df.itertuples():
     st.write(f"{row.diffTime}")
 
