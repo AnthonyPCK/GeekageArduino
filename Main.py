@@ -33,7 +33,7 @@ df.Date = pd.to_datetime(df.Date)
 #for row in df.itertuples():
 #    st.write(f"{row.TempInt}")
 
-Voies = ['TempInt', 'Modele_StationCh', 'Modele_MeteoOWM']
-
-fig1 = px.scatter(df, x=df.Date, y=df[Voies],range_y=[-20, 100],title="Comportement Thermique :")
+Voies = ['Date', 'TempInt', 'Modele_StationCh', 'Modele_MeteoOWM']
+df2=df[Voies]
+fig1 = px.scatter(df, x=df2.Date, y=df2.columns,range_y=[-20, 100],title="Comportement Thermique :")
 st.plotly_chart(fig1, use_container_width=True)  
