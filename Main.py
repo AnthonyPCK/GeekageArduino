@@ -33,7 +33,7 @@ df.Date = pd.to_datetime(df.Date)
 #for row in df.itertuples():
 #    st.write(f"{row.TempInt}")
 
-df.diffTime = np.concatenate((np.array([0]),np.diff(df.Date)))
+df["diffTime"] = np.concatenate((np.array([0]),np.diff(df.Date)))
 
 
 Voies = ['Date', 'TempInt', 'Modele_StationCh', 'Modele_MeteoOWM']
