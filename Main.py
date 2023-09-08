@@ -29,7 +29,7 @@ def load_data(sheets_url):
 
 df = load_data(st.secrets["public_gsheets_url"])
 df.Date = pd.to_datetime(df.Date)
-df["Time"] = df.Date.values.astype(np.int64)
+df["Time"] = df.Date.values.astype(np.int64) // 10 ** 9
 df["diffTime"] = np.concatenate((np.array([0]),np.diff(df.Time)))
 # Print results.
 #for row in df.itertuples():
