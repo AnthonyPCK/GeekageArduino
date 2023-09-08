@@ -36,6 +36,7 @@ df["diffTime"] = np.concatenate((np.array([0]),np.diff((df.Date.values.astype(np
 for ii in df.index:
     if ii>1:
         df.at[ii,"Modele_StationCh"] = df.at[ii-1,"Modele_StationCh"] + (df.at[ii,"TempStationChaptuzat"]-df.at[ii-1,"Modele_StationCh"])*0.035*df.at[ii,"diffTime"]
+        df.at[ii,"Modele_StationCh"] = df.at[ii-1,"Modele_MeteoOWM"] + (df.at[ii,"TempStationChaptuzat"]-df.at[ii-1,"Modele_MeteoOWM"])*0.035*df.at[ii,"diffTime"]
 
 
 
