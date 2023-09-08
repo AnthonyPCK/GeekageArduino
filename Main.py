@@ -35,7 +35,10 @@ df["diffTime"] = np.concatenate((np.array([0]),np.diff((df.Date.values.astype(np
 #for row in df.itertuples():
 #    st.write(f"{row.Time}")
 
-
+for row in df.itertuples():
+    if row>1:
+        df.loc[row,"Modele_StationCh"] = df.loc[row-1].Modele_StationCh
+        st.write(f"{row.Time}")
 
 
 
