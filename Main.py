@@ -33,10 +33,11 @@ df.Date = pd.to_datetime(df.Date)
 df["diffTime"] = np.concatenate((np.array([0]),np.diff((df.Date.values.astype(np.int64) // 10 ** 9)/60/60)))
 
 ParamPerte = 0.033 # °C/h/°C
+ParamChauffPassive = 0.01 # °C/h (appareils elec + chaleur humaine + UV-IR)
 for ii in df.index:
     if ii>1:
-        df.at[ii,"Modele_StationCh"] = df.at[ii-1,"Modele_StationCh"] + (df.at[ii,"TempStationChaptuzat"]-df.at[ii-1,"Modele_StationCh"])*ParamPerte*df.at[ii,"diffTime"]
-        df.at[ii,"Modele_MeteoOWM"] = df.at[ii-1,"Modele_MeteoOWM"] + (df.at[ii,"TempOWM"]-df.at[ii-1,"Modele_MeteoOWM"])*ParamPerte*df.at[ii,"diffTime"]
+        df.at[ii,"Modele_StationCh"] = df.at[ii-1,"Modele_StationCh"] + ((df.at[ii,"TempStationChaptuzat"]-df.at[ii-1,"Modele_StationCh"])*ParamPerte + ParamChauffPassive)*df.at[ii,"diffTime"]
+        df.at[ii,"Modele_MeteoOWM"] = df.at[ii-1,"Modele_MeteoOWM"] + ((df.at[ii,"TempOWM"]-df.at[ii-1,"Modele_MeteoOWM"])*ParamPerte + ParamChauffPassive)*df.at[ii,"diffTime"]
         Tint = df.at[ii,"TempInt"]
         Text = df.at[ii,"TempStationChaptuzat"]
         Text2 = df.at[ii,"TempOWM"]
