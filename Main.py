@@ -33,7 +33,7 @@ df.Date = pd.to_datetime(df.Date)
 df["diffTime"] = np.concatenate((np.array([0]),np.diff((df.Date.values.astype(np.int64) // 10 ** 9)/60/60)))
 
 ParamPerte = 0.027 # °C/h/°C
-ParamChauffPassive = 0.1 # °C/h (appareils elec + chaleur humaine + UV-IR)
+ParamChauffPassive = 0.08 # °C/h (appareils elec + chaleur humaine + UV-IR)
 for ii in df.index:
     if ii>1:
         df.at[ii,"Modele_StationCh"] = df.at[ii-1,"Modele_StationCh"] + ((df.at[ii,"TempStationChaptuzat"]-df.at[ii-1,"Modele_StationCh"])*ParamPerte + ParamChauffPassive)*df.at[ii,"diffTime"]
