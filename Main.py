@@ -46,11 +46,15 @@ st.write('Temperature extérieure Chap = ', Text)
 st.write('Temperature extérieure OWM = ', Text2)
 
 
-Voies = ['Date', 'TempInt', "TempStationChaptuzat", 'Modele_StationCh', 'Modele_MeteoOWM']
+Voies = ['Date', 'TempInt', "TempStationChaptuzat", 'Modele_StationCh', 'TempOWM', 'Modele_MeteoOWM']
 df2=df[Voies]
-fig1 = px.line(df2, x=df2.Date, y=df2.columns,title="Modélisation :")
-st.plotly_chart(fig1, use_container_width=True)  
+fig0 = px.line(df2.tail(100), x=df2.Date, y=df2.columns,title="Derniers jours :")
+st.plotly_chart(fig0, use_container_width=True)  
 
+Voies = ['Date', 'TempInt', "TempStationChaptuzat", 'Modele_StationCh', 'Modele_MeteoOWM']
+df3=df[Voies]
+fig1 = px.line(df3, x=df3.Date, y=df3.columns,title="Modélisation :")
+st.plotly_chart(fig1, use_container_width=True)  
 
 fig2 = px.line(df, x=df.Date, y=df.columns,range_y=[-20, 100],title="Tout :")
 st.plotly_chart(fig2, use_container_width=True)  
