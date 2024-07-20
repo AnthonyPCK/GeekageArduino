@@ -39,9 +39,11 @@ for ii in df.index:
         df.at[ii,"Modele_MeteoOWM"] = df.at[ii-1,"Modele_MeteoOWM"] + (df.at[ii,"TempOWM"]-df.at[ii-1,"Modele_MeteoOWM"])*ParamPerte*df.at[ii,"diffTime"]
         Tint = df.at[ii,"TempInt"]
         Text = df.at[ii,"TempStationChaptuzat"]
+        Text2 = df.at[ii,"TempOWM"]
 
 st.write('Temperature intérieure = ', Tint)
-st.write('Temperature extérieure = ', Text)
+st.write('Temperature extérieure Chap = ', Text)
+st.write('Temperature extérieure OWM = ', Text2)
 
 
 Voies = ['Date', 'TempInt', "TempStationChaptuzat", 'Modele_StationCh', 'Modele_MeteoOWM']
