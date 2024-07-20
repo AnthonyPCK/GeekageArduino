@@ -48,7 +48,7 @@ st.write('Temperature extérieure OWM = ', Text2)
 
 
 Voies = ['Date', 'TempInt', "TempStationChaptuzat", 'Modele_StationCh', 'TempOWM', 'Modele_MeteoOWM']
-df2=df[Voies].tail(700)
+df2=df[Voies].tail(4500)
 fig0 = px.line(df2, x=df2.Date, y=df2.columns,title="Derniers jours :")
 st.plotly_chart(fig0, use_container_width=True)  
 
